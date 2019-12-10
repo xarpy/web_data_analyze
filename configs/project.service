@@ -1,0 +1,19 @@
+[Unit]
+Description=Gunicorn instance to serve a Project - Web Data Analyze
+After=network.target
+
+[Service]
+User=root
+Group=nginx
+WorkingDirectory=/var/www/api_ms
+Environment="PATH=/home/nlt-adm/miniconda3/envs/api_ms/bin"
+ExecStart=/home/nlt-adm/miniconda3/envs/project/bin/gunicorn \
+ -u root \
+ -w 7 \
+ -b unix:api_ms.sock \
+ --log-file /var/log/project.log --log-level=DEBUG \
+ --timeout 300 \
+ main:app
+
+[Install]
+WantedBy=multi-user.target
