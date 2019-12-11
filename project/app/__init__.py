@@ -7,8 +7,6 @@ from flask_cors import CORS
 from .api import configure as config_api
 from .models.core import configure as config_db
 
-# from flask_migrate import Migrate
-
 
 def create_app(config_name):
 
@@ -21,6 +19,5 @@ def create_app(config_name):
 
     '''Added Thirds'''
     CORS(app)
-    # Migrate(app, app.db)
 
     return app
