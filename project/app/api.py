@@ -1,6 +1,5 @@
+from app.resources.analysis_data import DataAnalyze, DataLog
 from flask_restful import Api
-
-from .routes.analysis_data import DataAnalyze, DataLog
 
 # Instânciamos a API do FlaskRestful
 api = Api()
