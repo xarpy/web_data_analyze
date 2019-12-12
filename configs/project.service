@@ -5,12 +5,12 @@ After=network.target
 [Service]
 User=root
 Group=nginx
-WorkingDirectory=/var/www/api_ms
-Environment="PATH=/home/nlt-adm/miniconda3/envs/api_ms/bin"
-ExecStart=/home/nlt-adm/miniconda3/envs/project/bin/gunicorn \
+WorkingDirectory=/var/www/project
+Environment="PATH=/home/user/miniconda3/envs/web_analyze/bin"
+ExecStart=/home/user/miniconda3/envs/web_analyze/bin/gunicorn \
  -u root \
  -w 7 \
- -b unix:api_ms.sock \
+ -b unix:analyze.sock \
  --log-file /var/log/project.log --log-level=DEBUG \
  --timeout 300 \
  main:app
