@@ -14,9 +14,10 @@ class Config:
     LOGGING_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     MONGODB_DB = os.getenv('DB_NAME')
     MONGODB_HOST = os.getenv('DB_HOST')
-    MONGODB_PORT = os.getenv('DB_PORT')
-    MONGODB_USERNAME = os.getenv('DB_USERNAME')
-    MONGODB_PASSWORD = os.getenv('DB_PASSWORD')
+    MONGODB_PORT = int(os.getenv('DB_PORT'))
+    # TODO: If your db need it to credentials, only uncomment this 2 tracks and set informations into .env file!
+    # MONGODB_USERNAME = os.getenv('DB_USERNAME')
+    # MONGODB_PASSWORD = os.getenv('DB_PASSWORD')
     MONGODB_CONNECT = False
     LOGGING_LOCATION = os.getenv('LOG')
     LOGGING_LEVEL = logging.DEBUG
