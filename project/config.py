@@ -3,25 +3,23 @@ import logging
 import os
 from datetime import timedelta
 
-# from app.utils import get_local_env
 from dotenv import find_dotenv, load_dotenv
 
-# A partir do arquivo atual adiciona o path do arquivo .env
+# Method to get information into .env file!
 load_dotenv(find_dotenv())
 
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY')
     LOGGING_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    MONGODB_DB = 'test'
-    MONGODB_HOST = 'localhost'
-    MONGODB_PORT = 27017
-    MONGODB_USERNAME = 'webapp'
-    MONGODB_PASSWORD = 'pwd123'
+    MONGODB_DB = os.getenv('DB_NAME')
+    MONGODB_HOST = os.getenv('DB_HOST')
+    MONGODB_PORT = os.getenv('DB_PORT')
+    MONGODB_USERNAME = os.getenv('DB_USERNAME')
+    MONGODB_PASSWORD = os.getenv('DB_PASSWORD')
     MONGODB_CONNECT = False
     LOGGING_LOCATION = os.getenv('LOG')
     LOGGING_LEVEL = logging.DEBUG
-    SQLALCHEMY_DATABASE_URI = os.getenv('DB')
     PROPAGATE_EXCEPTIONS = True
 
 
