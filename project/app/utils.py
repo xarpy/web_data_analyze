@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-'''
-Neste arquivo, temos as funções recorrentes para todos os clientes.
-'''
 import re
 from os.path import dirname, join
 
@@ -15,30 +12,20 @@ def format_string_for_snake(string):
     regex = re.compile('[@!#$%^&*()<>?\|}{~:]')
     if(regex.search(string) == None):
         s = string.replace(" ", "_")
-        return s.replace("/", "_")
+        return s.replace("/", "_").casefold()
 
     else:
         result = regex.sub("", string).casefold().replace(" ", "_")
         return result.replace("/", "_")
 
-# TODO: Retirar contexto
-# def pagination(data, url, start, limit):
-#     count = len(data)
-#     if (count < start):
-#         abort(404)
-#     return dict(
-#         start=start,
-#         limit=limit,
-#         count=count,
-#         message=data[(start - 1):(start - 1 + limit)],
-#     )
-
 
 def register_log(filename, list_errors):
-    log = LogApi(name_file=filename, errors=list_errors)
+    """Register object log into collection Logs"""
+    log = Logs(name_file=filename, errors=json.dumps(list_errors)).save()
 
 
 def send_reponse(msg, code, headers=None):
+    """function to send response with all customization"""
     send = Response(
         response=json.dumps(msg),
         status=code,
@@ -47,8 +34,3 @@ def send_reponse(msg, code, headers=None):
     if headers is not None:
         send.headers.add(headers[0], headers[1])
     return send
-
-# TODO: Analisar uso e contexto
-# def get_local_env():
-#     path = join(dirname(__file__), '.env')
-#     return path
