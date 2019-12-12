@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 
-'''[Models: Core]
-Neste arquivo, temos a estrutura principal do APP.
-'''
 from datetime import datetime
 
 from flask_mongoengine import MongoEngine
 from flask_mongoengine.wtf import model_form
-from mongoengine import DateTimeField, ListField
+from mongoengine import DateTimeField, ListField, StringField
 
 db = MongoEngine()
 
@@ -18,6 +15,7 @@ def configure(app):
 
 
 class Logs(db.Document):
+    """Model for Logs"""
     name_file = StringField(required=True)
     errors = ListField(required=True)
     created = DateTimeField(default=datetime.now)
