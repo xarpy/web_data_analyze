@@ -18,6 +18,6 @@ def create_app(config_name):
     config_db(app)
 
     '''Added Thirds'''
-    CORS(app)
+    CORS(app, resources={r'/*': {'origins': '*'}})
 
     return app
